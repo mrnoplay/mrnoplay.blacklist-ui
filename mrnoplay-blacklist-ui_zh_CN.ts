@@ -56,11 +56,16 @@
         <source>Add an App</source>
         <translation>增加应用</translation>
     </message>
+    <message>
+        <location filename="main.qml" line="172"/>
+        <source>Blocks are on only when Mr Noplay is running in workmode.</source>
+        <translation>所有设置仅在 Mr Noplay 以工作模式计时时启用。</translation>
+    </message>
 </context>
 <context>
     <name>not-from-mr</name>
     <message>
-        <location filename="not-from-mr.qml" line="14"/>
+        <location filename="not-from-mr.qml" line="15"/>
         <source>This app can only be opened from Mr Noplay</source>
         <translation>只允许通过 Mr Noplay 打开此应用。</translation>
     </message>

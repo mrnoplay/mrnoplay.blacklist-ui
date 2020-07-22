@@ -47,6 +47,11 @@
         <translation>Add an App</translation>
     </message>
     <message>
+        <location filename="main.qml" line="172"/>
+        <source>Blocks are on only when Mr Noplay is running in workmode.</source>
+        <translation>Blocks are on only when Mr Noplay is running in workmode.</translation>
+    </message>
+    <message>
         <location filename="main.qml" line="88"/>
         <source>Forbidden</source>
         <translation>Forbidden</translation>
@@ -60,7 +65,7 @@
 <context>
     <name>not-from-mr</name>
     <message>
-        <location filename="not-from-mr.qml" line="14"/>
+        <location filename="not-from-mr.qml" line="15"/>
         <source>This app can only be opened from Mr Noplay</source>
         <translation>This app can only be opened from Mr Noplay</translation>
     </message>

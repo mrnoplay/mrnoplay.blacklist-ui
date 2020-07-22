@@ -108,8 +108,5 @@ int main(int argc, char *argv[])
         engine.load(url);
     }
     qmlRegisterType<AddTransfer>("AddTransfer", 1, 0, "AddTransfer");
-    QString appname = "/Applications/Adobe Zii 2019 4.4.1.app";
-    QString shellchar = "mdls -name kMDItemCFBundleIdentifier -r " + appname.replace(" ","\" \"");
-    qDebug() << shell_in_main(shellchar);
     return app.exec();
 }

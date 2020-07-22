@@ -14,18 +14,22 @@ Window {
     onToAddNameChanged: {
         listnames.append({name: toAddName})
         for (var i = 0; i <= listnames.count; i++) {
-          if(listnames.get(i).name === toAddName) {
-              listnames.remove(i);
-          }
+            if(listnames.get(i).name === toAddName) {
+                listnames.remove(i);
+            }
         }
         listnames.append({name: toAddName})
     }
+
+    //way: 0=false=blacklist, 1=true=whitelist
+    property int way: 0;
 
     property var db;
     function initDatabase() {
         db = LocalStorage.openDatabaseSync("mrnoplay-blacklist", "1.0", "The Blacklist", 100000);
         db.transaction( function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS blacklist(name TEXT)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS way(selection INTEGER)');
         });
     }
     function readData() {
@@ -35,6 +39,9 @@ Window {
             for(var i = 0; i < result.rows.length; i++) {
                 listnames.append({name: result.rows[i].name});
             }
+            var wayresult = tx.executeSql('select * from way');
+            way = wayresult.rows[0].selection;
+            combo.currentIndex = way;
         });
     }
     function storeData() {
@@ -42,9 +49,12 @@ Window {
         db.transaction(function(tx) {
             tx.executeSql('DROP TABLE blacklist');
             tx.executeSql('CREATE TABLE IF NOT EXISTS blacklist(name TEXT)');
-            for (var i = 0; i <= listnames.count; i++) {
-              tx.executeSql("INSERT INTO blacklist VALUES ('" + listnames.get(i).name + "')");
+            for (var i = 0; i < listnames.count; i++) {
+                tx.executeSql("INSERT INTO blacklist VALUES ('" + listnames.get(i).name + "')");
             }
+            tx.executeSql('DROP TABLE way');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS way(selection INTEGER)');
+            tx.executeSql("INSERT INTO way VALUES ('" + way + "')");
         });
     }
 
@@ -86,6 +96,9 @@ Window {
                 width: 100
                 height: 20
                 model: [qsTr("Forbidden"), qsTr("Allowed")]
+                onActivated: {
+                    way = index;
+                }
             }
         }
 
@@ -135,10 +148,10 @@ Window {
                             }
 
                             onClicked: {
-                                for (var i = 0; i <= listnames.count; i++) {
-                                  if(listnames.get(i).name === name) {
-                                      listnames.remove(i);
-                                  }
+                                for (var i = 0; i < listnames.count; i++) {
+                                    if(listnames.get(i).name === name) {
+                                        listnames.remove(i);
+                                    }
                                 }
                             }
                         }
@@ -160,11 +173,21 @@ Window {
                 width: 110
                 text: qsTr("Add an App")
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: 15
+                anchors.bottomMargin: 30
                 onClicked: {
                     var component = Qt.createComponent("add.qml");
                     component.createObject(add).show();
                 }
+            }
+
+            Text {
+                id: label02
+                text: qsTr("Blocks are on only when Mr Noplay is running in workmode.")
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 10
+                anchors.left: parent.left
+                anchors.leftMargin: 0
+                font.pixelSize: 10
             }
         }
     }
