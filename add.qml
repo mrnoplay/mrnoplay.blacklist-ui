@@ -1,6 +1,8 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
+import QtQuick.Dialogs 1.2
+import AddTransfer 1.0
 
 Window {
     id: add
@@ -9,13 +11,24 @@ Window {
     height: 100
     title: qsTr("Mr Noplay Blacklist")
 
+    property string bundleId: "com.scrisstudio.exampleapp";
+
+    AddTransfer {
+        id: addtrans
+        onSig_getFromTerminal: {
+            bundleId = shellresult;
+            main.toAddName = bundleId;
+            add.close();
+        }
+    }
+
     Column {
         id: container
-        y: 10
+        y: 4
         width: 320
         height: 400
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.topMargin: 4
 
         Row {
             id: titlebar
@@ -46,39 +59,56 @@ Window {
 
             Button {
                 id: submit
-                x: 160
+                objectName: "submit"
+                x: 100
                 text: qsTr("Submit")
                 anchors.top: parent.top
                 anchors.topMargin: 0
                 onClicked: {
-                    if(textField.text.indexOf(" ") == -1 && textField.text.indexOf("'") == -1 && textField.text != ''){
-                        main.toAddName = textField.text;
-                        add.close();
-                    } else {
-                        illegalinput.visible = true;
-                    }
+                    if(result.text.indexOf("Mr Noplay") != -1) result.text = qsTr("Invalid.");
+                    else addtrans.slot_getFromTerminal(result.text);
                 }
             }
 
-            TextField {
-                id: textField
-                x: 15
-                width: 140
-                height: 26
-                placeholderText: qsTr("Enter the Name Here")
+            FileDialog {
+                id: filedialog
+                title: "Please choose a file"
+                folder: shortcuts.home
+                onAccepted: {
+                    result.text = filedialog.fileUrl;
+                    result.text = result.text.slice(7);
+                }
+                visible: false
             }
-        }
 
-        Text {
-            id: illegalinput
-            color: "#e31c1c"
-            text: qsTr("Only supports letters and dots.")
-            visible: false
-            anchors.left: parent.left
-            anchors.leftMargin: 15
-            anchors.top: parent.top
-            anchors.topMargin: 64
-            font.pixelSize: 12
+            Button {
+                id: choose
+                x: 15
+                text: qsTr("Choose")
+                anchors.top: parent.top
+                anchors.topMargin: 0
+                onClicked: filedialog.visible = true;
+            }
+
+            Text {
+                id: result
+                width: 210
+                height: 26
+                elide: Text.ElideNone
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                renderType: Text.QtRendering
+                anchors.top: parent.top
+                anchors.topMargin: 30
+                visible: true
+                font.bold: false
+                verticalAlignment: Text.AlignTop
+                horizontalAlignment: Text.AlignLeft
+                font.pixelSize: 12
+                rightPadding: 0
+                topPadding: 0
+                leftPadding: 0
+            }
         }
     }
 
@@ -86,6 +116,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:5;anchors_y:0}D{i:1;anchors_y:15}
+    D{i:5;anchors_y:0}D{i:7;anchors_y:0}D{i:8;anchors_x:15}D{i:1;anchors_y:15}
 }
 ##^##*/

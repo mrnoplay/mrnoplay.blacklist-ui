@@ -14,6 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        add.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -45,7 +46,11 @@ QMAKE_TARGET_COMPANY = "Scris Studio"
 QMAKE_TARGET_PRODUCT = "Mr Noplay Blacklist UI"
 QMAKE_TARGET_DESCRIPTION = "The blacklist part for Mr Noplay"
 QMAKE_TARGET_COPYRIGHT = "Copyright (c) 2019-2020 Tianze Ds Qiu from Scris Studio."
+QMAKE_TARGET_BUNDLE_PREFIX = 'com.scrisstudio.'
+QMAKE_PKGINFO_TYPEINFO = "Copyright (c) 2019-2020 Tianze Ds Qiu from Scris Studio."
 
 DISTFILES += \
     mrnoplay-blacklist-ui_en_US.ts
 
+HEADERS += \
+    add.h

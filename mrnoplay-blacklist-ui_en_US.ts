@@ -4,29 +4,29 @@
 <context>
     <name>add</name>
     <message>
-        <location filename="add.qml" line="10"/>
+        <location filename="add.qml" line="12"/>
         <source>Mr Noplay Blacklist</source>
         <translation>Mr Noplay Blacklist</translation>
     </message>
     <message>
-        <location filename="add.qml" line="29"/>
+        <location filename="add.qml" line="42"/>
         <source>Add an App</source>
         <translation>Add an App</translation>
     </message>
     <message>
-        <location filename="add.qml" line="50"/>
+        <location filename="add.qml" line="64"/>
         <source>Submit</source>
         <translation>Submit</translation>
     </message>
     <message>
         <location filename="add.qml" line="68"/>
-        <source>Enter the Name Here</source>
-        <translation>Enter the Name Here</translation>
+        <source>Invalid.</source>
+        <translation>Invalid.</translation>
     </message>
     <message>
-        <location filename="add.qml" line="75"/>
-        <source>Only supports letters and dots.</source>
-        <translation>Only supports letters and dots.</translation>
+        <location filename="add.qml" line="87"/>
+        <source>Choose</source>
+        <translation>Choose</translation>
     </message>
 </context>
 <context>
@@ -42,7 +42,7 @@
         <translation>Only Selected Apps are: </translation>
     </message>
     <message>
-        <location filename="main.qml" line="160"/>
+        <location filename="main.qml" line="161"/>
         <source>Add an App</source>
         <translation>Add an App</translation>
     </message>
