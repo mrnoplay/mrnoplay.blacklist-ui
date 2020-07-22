@@ -9,16 +9,16 @@ class AddTransfer : public QObject
 
     Q_PROPERTY(QString text READ text WRITE goTerminal NOTIFY sig_getFromTerminal)
 
-public:
+  public:
     AddTransfer();
     virtual ~AddTransfer();
     QString text();
     void goTerminal(QString gttext);
-signals:
+  signals:
     void sig_getFromTerminal(QString shellresult);
-public slots:
+  public slots:
     void slot_getFromTerminal(QString sgftext);
-private:
+  private:
     QString _text;
 };
 
