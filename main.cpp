@@ -1,7 +1,5 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QJsonDocument>
-#include <QJsonObject>
 #include <QDebug>
 #include <QTranslator>
 #include <QProcess>
@@ -23,34 +21,11 @@ void parseArguments()
 
   qDebug() << "Arguments : " << arguments;
 
-  if (arguments.count() < 2)
+  if (arguments.count() < 3)
     return;
 
-  QString strJson = arguments.at(1);
-
-  // Get Info from JSON
-  QJsonParseError jsonError;
-  QJsonDocument document = QJsonDocument::fromJson(strJson.toLocal8Bit(), &jsonError);
-  if (jsonError.error != QJsonParseError::NoError)
-    return;
-
-  if (document.isObject())
-  {
-    QJsonObject obj = document.object();
-    QJsonValue value;
-    if (obj.contains("LangCn"))
-    {
-      value = obj.take("LangCn");
-      if (value.isString())
-        MAppArgs.LangCn = value == "true";
-    }
-    if (obj.contains("FromMr"))
-    {
-      value = obj.take("FromMr");
-      if (value.isString())
-        MAppArgs.FromMr = value == "true";
-    }
-  }
+  MAppArgs.LangCn = arguments.at(1) == "cn";
+  MAppArgs.FromMr = arguments.at(2) == "_COMMAND";
 }
 
 QString shell_in_main(QString text)
@@ -115,3 +90,14 @@ int main(int argc, char *argv[])
   qmlRegisterType<AddTransfer>("AddTransfer", 1, 0, "AddTransfer");
   return app.exec();
 }
+
+
+/*
+ * Windeployqt
+ * C:\Qt\5.9.9\5.9.9\mingw53_32\bin\windeployqt.exe  C:\Users\tianzeds\Documents\GitHub\release-mrnoplay-blacklist-ui\release\mrnoplay-blacklist-ui.exe --qmldir C:\Qt\5.9.9\5.9.9\mingw53_32\qml
+ */
+
+/*
+ * Run on macOS
+ * open /Users/we/Documents/GitHub/mrnoplay-blacklist-ui/release/mrnoplay-blacklist-ui.app --args cn _COMMAND
+ */

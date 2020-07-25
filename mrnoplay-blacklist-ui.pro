@@ -36,10 +36,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 # The ICON Path
 ICON = favicon.icns
+RC_ICONS = favicon.ico
+RC_FILE = ui.rc
 
 # Define Version
-VERSION = 3.1.0-1.0.0
-DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+VERSION = 1.0.0.0
 
 # Define Information
 QMAKE_TARGET_COMPANY = "Scris Studio"
@@ -50,7 +51,10 @@ QMAKE_TARGET_BUNDLE_PREFIX = 'com.scrisstudio.'
 QMAKE_PKGINFO_TYPEINFO = "Copyright (c) 2019-2020 Tianze Ds Qiu from Scris Studio."
 
 DISTFILES += \
-    mrnoplay-blacklist-ui_en_US.ts
+    favicon.ico \
+    mrnoplay-blacklist-ui_en_US.ts \
+    ui.rc
 
 HEADERS += \
-    add.h
+    add.h \
+    version.h

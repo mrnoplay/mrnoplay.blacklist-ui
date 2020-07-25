@@ -21,7 +21,12 @@ QString AddTransfer::text()
 QString shell(QString text)
 {
   QProcess process;
-  QString shellchar = "mdls -name kMDItemCFBundleIdentifier -r " + text.replace(" ", "\" \"");
+  QString shellchar;
+#ifdef Q_OS_WIN32
+  shellchar = "" + text.replace(" ", "\" \"");
+#else
+  shellchar = "mdls -name kMDItemCFBundleIdentifier -r " + text.replace(" ", "\" \"");
+#endif
   process.start(shellchar);
   process.waitForFinished();
   return QString::fromLocal8Bit(process.readAllStandardOutput());
