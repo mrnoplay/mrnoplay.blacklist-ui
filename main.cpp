@@ -10,9 +10,10 @@ struct MArguments // Command Arguments
 {
   bool LangCn; // true = lang is zh-CN
   bool FromMr; // true = is from Mr Noplay
+  bool On_Off; // true = on Blacklisting
 };
 
-MArguments MAppArgs = {false, false};
+MArguments MAppArgs = {false, false, false};
 
 void parseArguments()
 {
@@ -26,6 +27,12 @@ void parseArguments()
 
   MAppArgs.LangCn = arguments.at(1) == "cn";
   MAppArgs.FromMr = arguments.at(2) == "_COMMAND";
+  MAppArgs.On_Off = arguments.at(3) == "on";
+}
+
+void block()
+{
+
 }
 
 QString shell_in_main(QString text)
@@ -85,7 +92,16 @@ int main(int argc, char *argv[])
   }
   else
   {
-    engine.load(url);
+    if (!MAppArgs.On_Off)
+    {
+      engine.load(url);
+    }
+    else
+    {
+      block();
+      const QUrl urlBlocking(QStringLiteral("qrc:/blocking.qml"));
+      engine.load(urlBlocking);
+    }
   }
   qmlRegisterType<AddTransfer>("AddTransfer", 1, 0, "AddTransfer");
   return app.exec();

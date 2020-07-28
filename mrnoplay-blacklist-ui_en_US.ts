@@ -30,6 +30,19 @@
     </message>
 </context>
 <context>
+    <name>blocking</name>
+    <message>
+        <location filename="blocking.qml" line="9"/>
+        <source>Mr Noplay Blacklist</source>
+        <translation>Mr Noplay Blacklist</translation>
+    </message>
+    <message>
+        <location filename="blocking.qml" line="17"/>
+        <source>App blocking is running now.</source>
+        <translation>App blocking is running now.</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="main.qml" line="11"/>
@@ -37,27 +50,27 @@
         <translation>Mr Noplay Blacklist</translation>
     </message>
     <message>
-        <location filename="main.qml" line="75"/>
+        <location filename="main.qml" line="85"/>
         <source>Only Selected Apps are: </source>
         <translation>Only Selected Apps are: </translation>
     </message>
     <message>
-        <location filename="main.qml" line="161"/>
+        <location filename="main.qml" line="174"/>
         <source>Add an App</source>
         <translation>Add an App</translation>
     </message>
     <message>
-        <location filename="main.qml" line="172"/>
+        <location filename="main.qml" line="185"/>
         <source>Blocks are on only when Mr Noplay is running in workmode.</source>
         <translation>Blocks are on only when Mr Noplay is running in workmode.</translation>
     </message>
     <message>
-        <location filename="main.qml" line="88"/>
+        <location filename="main.qml" line="98"/>
         <source>Forbidden</source>
         <translation>Forbidden</translation>
     </message>
     <message>
-        <location filename="main.qml" line="88"/>
+        <location filename="main.qml" line="98"/>
         <source>Allowed</source>
         <translation>Allowed</translation>
     </message>

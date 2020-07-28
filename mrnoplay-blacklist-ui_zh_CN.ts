@@ -30,6 +30,19 @@
     </message>
 </context>
 <context>
+    <name>blocking</name>
+    <message>
+        <location filename="blocking.qml" line="9"/>
+        <source>Mr Noplay Blacklist</source>
+        <translation>Mr Noplay 应用黑名单</translation>
+    </message>
+    <message>
+        <location filename="blocking.qml" line="17"/>
+        <source>App blocking is running now.</source>
+        <translation>应用黑/白名单功能已经开启。</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="main.qml" line="11"/>
@@ -37,27 +50,27 @@
         <translation>Mr Noplay 黑名单</translation>
     </message>
     <message>
-        <location filename="main.qml" line="75"/>
+        <location filename="main.qml" line="85"/>
         <source>Only Selected Apps are: </source>
         <translation>只有选择的应用是：</translation>
     </message>
     <message>
-        <location filename="main.qml" line="88"/>
+        <location filename="main.qml" line="98"/>
         <source>Forbidden</source>
         <translation>禁止的</translation>
     </message>
     <message>
-        <location filename="main.qml" line="88"/>
+        <location filename="main.qml" line="98"/>
         <source>Allowed</source>
         <translation>允许的</translation>
     </message>
     <message>
-        <location filename="main.qml" line="161"/>
+        <location filename="main.qml" line="174"/>
         <source>Add an App</source>
         <translation>增加应用</translation>
     </message>
     <message>
-        <location filename="main.qml" line="172"/>
+        <location filename="main.qml" line="185"/>
         <source>Blocks are on only when Mr Noplay is running in workmode.</source>
         <translation>所有设置仅在 Mr Noplay 以工作模式计时时启用。</translation>
     </message>
