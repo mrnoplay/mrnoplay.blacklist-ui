@@ -23,7 +23,7 @@ QString shell(QString text)
   QProcess process;
   QString shellchar;
 #ifdef Q_OS_WIN32
-  shellchar = "" + text.replace(" ", "\" \"");
+  return text;
 #else
   shellchar = "mdls -name kMDItemCFBundleIdentifier -r " + text.replace(" ", "\" \"");
 #endif

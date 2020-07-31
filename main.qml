@@ -1,6 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.2
 import QtQuick.LocalStorage 2.0
 
 Window {
@@ -58,6 +58,14 @@ Window {
         });
     }
 
+    function cut(original) {
+        var result = original;
+        if (Qt.platform.os !== "mac") {
+            result = ".." + original.slice((original.length - 32) > 0 ? (original.length - 32) : 1 ,original.length);
+        }
+        return result;
+    }
+
     Component.onCompleted: {
         initDatabase();
         readData();
@@ -70,19 +78,24 @@ Window {
         id: container
         width: 320
         height: 400
+        visible: true
         anchors.top: parent.top
         anchors.topMargin: 15
 
         Row {
             id: titlebar
-            y: 10
             width: 320
             height: 20
+            anchors.top: parent.top
+            anchors.topMargin: 0
 
             Text {
                 id: label01
                 height: 20
                 text: qsTr("Only Selected Apps are: ")
+                font.family: "Arial"
+                anchors.top: parent.top
+                anchors.topMargin: 5
                 rightPadding: 4
                 topPadding: 0
                 leftPadding: 15
@@ -93,9 +106,10 @@ Window {
 
             ComboBox {
                 id: combo
-                width: 100
-                height: 20
-                model: [qsTr("Forbidden"), qsTr("Allowed")]
+                width: 110
+                height: 30
+                font.pointSize: 9
+                model: Qt.platform.os == "mac" ? [qsTr("Forbidden"), qsTr("Allowed")] : [qsTr("Forbidden")]
                 onActivated: {
                     way = index;
                 }
@@ -104,14 +118,15 @@ Window {
 
         Column {
             id: listfather
-            y: 60
             width: 320
             height: 380
+            anchors.top: parent.top
+            anchors.topMargin: 40
 
             ListView {
                 id: list
                 width: 290
-                height: 360
+                height: 320
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 anchors.top: parent.top
@@ -119,16 +134,35 @@ Window {
                 model: ListModel {
                     id: listnames
                 }
+
                 delegate: Item {
                     x: 5
                     width: 290
                     height: 30
+
                     Row {
                         id: rowinlist
 
-                        Text {
-                            text: name
-                            font.bold: true
+                        Column {
+                            id: lefttextsinlist
+
+                            Text {
+                                text: cut(lefttextsinlist.children[1].text)
+                                font.bold: Qt.platform.os == "mac" ? true : false;
+                                font.pixelSize: Qt.platform.os == "mac" ? 0 : 11;
+                            }
+
+                            Text {
+                                text: name
+                                font.bold: Qt.platform.os !== "mac" ? true : false;
+                                font.pixelSize: Qt.platform.os !== "mac" ? 5 : 11;
+                                color: Qt.platform.os !== "mac" ? "grey" : "black";
+                                anchors.top: Qt.platform.os !== "mac" ? parent.top : none;
+                                anchors.topMargin: Qt.platform.os !== "mac" ? 12 : none;
+                            }
+
+                            height: 20
+                            width: 250
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
@@ -170,7 +204,8 @@ Window {
 
             Button {
                 id: add
-                width: 110
+                width: 90
+                height: 30
                 text: qsTr("Add an App")
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 30
@@ -195,6 +230,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:1;anchors_y:15}
+    D{i:2;anchors_y:10}D{i:5;anchors_y:60}D{i:1;anchors_y:15}
 }
 ##^##*/

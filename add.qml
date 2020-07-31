@@ -1,6 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.2
 import QtQuick.Dialogs 1.2
 import AddTransfer 1.0
 
@@ -60,12 +60,14 @@ Window {
             Button {
                 id: submit
                 objectName: "submit"
-                x: 100
+                x: 110
+                width: 80
+                height: 30
                 text: qsTr("Submit")
                 anchors.top: parent.top
                 anchors.topMargin: 0
                 onClicked: {
-                    if(result.text.indexOf("Mr Noplay") != -1) result.text = qsTr("Invalid.");
+                    if(result.text.indexOf("Mr Noplay") != -1 || result.text.indexOf("mrnoplay") != -1) result.text = qsTr("Invalid.");
                     else addtrans.slot_getFromTerminal(result.text);
                 }
             }
@@ -84,6 +86,8 @@ Window {
             Button {
                 id: choose
                 x: 15
+                width: 80
+                height: 30
                 text: qsTr("Choose")
                 anchors.top: parent.top
                 anchors.topMargin: 0
@@ -99,7 +103,7 @@ Window {
                 anchors.leftMargin: 15
                 renderType: Text.QtRendering
                 anchors.top: parent.top
-                anchors.topMargin: 30
+                anchors.topMargin: 35
                 visible: true
                 font.bold: false
                 verticalAlignment: Text.AlignTop
@@ -116,6 +120,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:5;anchors_y:0}D{i:7;anchors_y:0}D{i:8;anchors_x:15}D{i:1;anchors_y:15}
+    D{i:1;anchors_y:15}D{i:7;anchors_y:0}D{i:8;anchors_x:15}D{i:5;anchors_y:0}
 }
 ##^##*/

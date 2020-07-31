@@ -2,14 +2,14 @@ import QtQuick 2.9
 import QtQuick.Window 2.2
 
 Window {
-    id: notFromMr
+    id: blocking
     visible: true
     width: 320
     height: 480
     title: qsTr("Mr Noplay Blacklist")
 
     Text {
-        id: onlyfrommr
+        id: blockingtext
         x: 0
         y: 233
         width: 320
