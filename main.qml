@@ -60,7 +60,7 @@ Window {
 
     function cut(original) {
         var result = original;
-        if (Qt.platform.os !== "mac") {
+        if (Qt.platform.os !== "osx") {
             result = ".." + original.slice((original.length - 32) > 0 ? (original.length - 32) : 1 ,original.length);
         }
         return result;
@@ -148,17 +148,18 @@ Window {
 
                             Text {
                                 text: cut(lefttextsinlist.children[1].text)
-                                font.bold: Qt.platform.os == "mac" ? true : false;
-                                font.pixelSize: Qt.platform.os == "mac" ? 0 : 11;
+                                font.bold: Qt.platform.os !== "osx" ? true : false;
+                                font.pixelSize: Qt.platform.os == "osx" ? 1 : 11;
+                                color: Qt.platform.os == "osx" ? "white" : "black";
                             }
 
                             Text {
                                 text: name
-                                font.bold: Qt.platform.os !== "mac" ? true : false;
-                                font.pixelSize: Qt.platform.os !== "mac" ? 5 : 11;
-                                color: Qt.platform.os !== "mac" ? "grey" : "black";
-                                anchors.top: Qt.platform.os !== "mac" ? parent.top : none;
-                                anchors.topMargin: Qt.platform.os !== "mac" ? 12 : none;
+                                font.bold: Qt.platform.os == "osx" ? true : false;
+                                font.pixelSize: Qt.platform.os !== "osx" ? 5 : 13;
+                                color: Qt.platform.os !== "osx" ? "grey" : "black";
+                                anchors.top: parent.top;
+                                anchors.topMargin: Qt.platform.os !== "osx" ? 12 : 0;
                             }
 
                             height: 20
