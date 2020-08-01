@@ -30,11 +30,6 @@ void parseArguments()
   MAppArgs.On_Off = arguments.at(3) == "on";
 }
 
-void block()
-{
-
-}
-
 QString shell_in_main(QString text)
 {
   QProcess process;
@@ -50,6 +45,7 @@ int main(int argc, char *argv[])
   QGuiApplication app(argc, argv);
 
   QQmlApplicationEngine engine;
+  qmlRegisterType<AddTransfer>("AddTransfer", 1, 0, "AddTransfer");
   const QUrl url(QStringLiteral("qrc:/main.qml"));
   QObject::connect(
     &engine, &QQmlApplicationEngine::objectCreated,
@@ -98,12 +94,10 @@ int main(int argc, char *argv[])
     }
     else
     {
-      block();
       const QUrl urlBlocking(QStringLiteral("qrc:/blocking.qml"));
       engine.load(urlBlocking);
     }
   }
-  qmlRegisterType<AddTransfer>("AddTransfer", 1, 0, "AddTransfer");
   return app.exec();
 }
 

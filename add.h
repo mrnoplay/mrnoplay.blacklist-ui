@@ -16,8 +16,10 @@ class AddTransfer : public QObject
     void goTerminal(QString gttext);
   signals:
     void sig_getFromTerminal(QString shellresult);
+    void sig_openBlocking(QString way, QStringList listnames);
   public slots:
     void slot_getFromTerminal(QString sgftext);
+    void slot_openBlocking(QString way, QStringList listnames);
   private:
     QString _text;
 };
