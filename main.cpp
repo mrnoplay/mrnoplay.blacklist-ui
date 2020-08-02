@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QTranslator>
 #include <QProcess>
+#include <QQuickStyle>
 
 #include "add.h"
 
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
 
   QQmlApplicationEngine engine;
   qmlRegisterType<AddTransfer>("AddTransfer", 1, 0, "AddTransfer");
+  QQuickStyle::setStyle("Universal");
   const QUrl url(QStringLiteral("qrc:/main.qml"));
   QObject::connect(
     &engine, &QQmlApplicationEngine::objectCreated,

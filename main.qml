@@ -93,7 +93,6 @@ Window {
                 id: label01
                 height: 20
                 text: qsTr("Only Selected Apps are: ")
-                font.family: "Arial"
                 anchors.top: parent.top
                 anchors.topMargin: 5
                 rightPadding: 4

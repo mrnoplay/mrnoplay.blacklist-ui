@@ -1,5 +1,5 @@
 #include "add.h"
-
+#include <QGuiApplication>
 #include <QProcess>
 #include <QDebug>
 #include "stdlib.h"
@@ -24,7 +24,7 @@ QString shell(QString text)
   QProcess process;
   QString shellchar;
 #ifdef Q_OS_WIN32
-  return text.right(text.length()-1);
+  return text.right(text.length() - 1);
 #else
   shellchar = "mdls -name kMDItemCFBundleIdentifier -r " + text.replace(" ", "\" \"");
 #endif
@@ -53,15 +53,17 @@ void AddTransfer::slot_getFromTerminal(QString sgftext)
   goTerminal(sgftext);
 }
 
-void AddTransfer::slot_openBlocking(QString way, QStringList listnames) {
+void AddTransfer::slot_openBlocking(QString way, QStringList listnames)
+{
   QStringList args;
+#ifdef Q_OS_WIN32
   args << way << listnames;
-  #ifdef Q_OS_WIN32
-    QString pgmptr = _pgmptr;
-    pgmptr = pgmptr.left(pgmptr.length() - 26);
-    qDebug() << args;
-    shellWithArgumentsWithoutResponse(pgmptr + "\\mbk.exe", args);
-  #else
-    // DO THINGS IN macOS
-  #endif
+  QString pgmptr = _pgmptr;
+  pgmptr = pgmptr.left(pgmptr.length() - 26);
+  shellWithArgumentsWithoutResponse(pgmptr + "\\mbk.exe", args);
+#else
+  args << ((QCoreApplication::arguments().at(1) == "cn") ? "cn" : "en") << way << listnames;
+  shellWithArgumentsWithoutResponse("/Applications/Mr Noplay Tools/mbks", args);
+  qDebug() << args;
+#endif
 }
