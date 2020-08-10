@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DICTIONARY type="multilanguage">
+  <ENTRY id="Control.Text.ExitDialog#Notice">
+    <STRING lang="zh" value="重要提示：请将 C:\Program Files (x86)\Mr Noplay Blacklist\mbk.exe 加入到杀毒软件的白名单列表中。"/>
+  </ENTRY>
+</DICTIONARY>

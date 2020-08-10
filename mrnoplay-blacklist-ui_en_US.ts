@@ -14,17 +14,17 @@
         <translation>Add an App</translation>
     </message>
     <message>
-        <location filename="add.qml" line="64"/>
+        <location filename="add.qml" line="66"/>
         <source>Submit</source>
         <translation>Submit</translation>
     </message>
     <message>
-        <location filename="add.qml" line="68"/>
+        <location filename="add.qml" line="70"/>
         <source>Invalid.</source>
         <translation>Invalid.</translation>
     </message>
     <message>
-        <location filename="add.qml" line="87"/>
+        <location filename="add.qml" line="91"/>
         <source>Choose</source>
         <translation>Choose</translation>
     </message>
@@ -32,12 +32,12 @@
 <context>
     <name>blocking</name>
     <message>
-        <location filename="blocking.qml" line="9"/>
+        <location filename="blocking.qml" line="11"/>
         <source>Mr Noplay Blacklist</source>
         <translation>Mr Noplay Blacklist</translation>
     </message>
     <message>
-        <location filename="blocking.qml" line="17"/>
+        <location filename="blocking.qml" line="51"/>
         <source>App blocking is running now.</source>
         <translation>App blocking is running now.</translation>
     </message>
@@ -50,27 +50,27 @@
         <translation>Mr Noplay Blacklist</translation>
     </message>
     <message>
-        <location filename="main.qml" line="85"/>
+        <location filename="main.qml" line="95"/>
         <source>Only Selected Apps are: </source>
         <translation>Only Selected Apps are: </translation>
     </message>
     <message>
-        <location filename="main.qml" line="174"/>
+        <location filename="main.qml" line="209"/>
         <source>Add an App</source>
-        <translation>Add an App</translation>
+        <translation>Add App</translation>
     </message>
     <message>
-        <location filename="main.qml" line="185"/>
+        <location filename="main.qml" line="220"/>
         <source>Blocks are on only when Mr Noplay is running in workmode.</source>
         <translation>Blocks are on only when Mr Noplay is running in workmode.</translation>
     </message>
     <message>
-        <location filename="main.qml" line="98"/>
+        <location filename="main.qml" line="111"/>
         <source>Forbidden</source>
         <translation>Forbidden</translation>
     </message>
     <message>
-        <location filename="main.qml" line="98"/>
+        <location filename="main.qml" line="111"/>
         <source>Allowed</source>
         <translation>Allowed</translation>
     </message>
