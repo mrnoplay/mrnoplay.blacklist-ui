@@ -108,7 +108,7 @@ Window {
                 width: 110
                 height: 30
                 font.pointSize: 9
-                model: Qt.platform.os == "mac" ? [qsTr("Forbidden"), qsTr("Allowed")] : [qsTr("Forbidden")]
+                model: (Qt.platform.os == "mac" || Qt.platform.os == "osx") ? [qsTr("Forbidden"), qsTr("Allowed")] : [qsTr("Forbidden")]
                 onActivated: {
                     way = index;
                 }
